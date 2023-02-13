@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <style>
+            *{
+                font-family: 'Times new Roman';
+                color: gray;
+                text-align: center;
+            }
+
+            h1{
+                font-size: 64;
+                color: rgb(255, 255, 255);
+                background-color: darkorange;
+            }
+            h6{
+                color: rgb(255, 255, 255);
+                background-color: darkorange;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            //variabelen
+            var loginData = [["david", "mustafa", "cecil", "edo", "arjan", "sven"],[1,2,3,4,5,6]];
+
+            var name = "";
+            var password = "";
+
+            //controlleert gebruikersnaam en wachtwoord op
+            function saveData()
+            {
+                name = document.getElementById("nameArea").value.trim().toLowerCase();
+                password = document.getElementById("passwordArea").value;
+
+                let nameID = -1;
+
+                for (let i = 0; i < loginData[0].length; i++)
+                {
+                    if (name == loginData[0][i] && password == loginData[1][i])
+                    {
+                        nameID = i;
+                        break;
+                    }
+                }
+
+                if (name == "" || password == "")
+                {
+                    alert("U moet beide velden invullen!");
+                    
+                    document.getElementById("nameArea").style.backgroundColor = "lightgray";
+                    document.getElementById("passwordArea").style.backgroundColor = "lightgray";
+                }
+                else if (nameID == -1)
+                {
+                    alert("Uw gebruikersnaam of wachtwoord is incorrect.\nProbeert u het alstublieft nog eens.");
+                    
+                    document.getElementById("nameArea").style.backgroundColor = "lightgray";
+                    document.getElementById("passwordArea").style.backgroundColor = "lightgray";
+                }
+                else
+                {
+                    alert("welkom terug, " + name + "!")
+
+                    document.getElementById("nameArea").style.backgroundColor = "white";
+                    document.getElementById("passwordArea").style.backgroundColor = "white";
+                }
+            } 
+        </script>
+        
+        
+        <h1>ING</h1>
+        <h6>Dit is echt de ING 100% geen leugen</h6><br><br>
+        <h2>Welkom terug, beste klant!</h2><Br>
+        Hier kunt u veilig inloggen.<br>Houd er altijd rekening mee dat scammers en phishers kunnen proberen een neppagina te bouwen om u te misleiden!<br><br>
+        Gebruikersnaam:<br>
+        <input id = "nameArea" type="text" width = 36></input><br><br>
+        Wachtwoord:<br>
+        <input id = "passwordArea" type="password" width = 36></input><br><br>
+
+        <button type="button" onclick="saveData()">Inloggen</button>
+    </body>
+</html>
